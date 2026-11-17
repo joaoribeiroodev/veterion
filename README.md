@@ -96,8 +96,8 @@ scripts/
   serve-frontend.js        -> servidor estático simples do frontend
 docs/
   der.drawio / der.png / der.md     -> Diagrama de Entidade e Relacionamento (fonte draw.io)
-  requisitos-funcionais.md          -> Relatório de Requisitos Funcionais
-  requisitos-nao-funcionais.md      -> Relatório de Requisitos Não Funcionais
+  requisitos-funcionais.pdf         -> Relatório de Requisitos Funcionais
+  requisitos-nao-funcionais.pdf     -> Relatório de Requisitos Não Funcionais
 ```
 
 ## O que mudou em relação ao protótipo original
