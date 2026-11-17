@@ -7,7 +7,12 @@ const path = require('path');
 const RAIZ = path.join(__dirname, '..');
 
 function iniciarProcesso(nome, comando, args, opcoes) {
-  const proc = spawn(comando, args, { stdio: 'pipe', shell: process.platform === 'win32', ...opcoes });
+  // No Windows, "npm" so e resolvido via shell (npm.cmd); "node" e um
+  // executavel direto e nao precisa de shell. Usar shell:true aqui causaria
+  // problemas com caminhos que contem espacos (ex.: "C:\\...\\2 - Sistemas\\..."),
+  // ja que o shell do Windows (cmd.exe) concatena os argumentos sem escapa-los.
+  const usaShell = process.platform === 'win32' && comando === 'npm';
+  const proc = spawn(comando, args, { stdio: 'pipe', shell: usaShell, ...opcoes });
 
   proc.stdout.on('data', (dado) => process.stdout.write(`[${nome}] ${dado}`));
   proc.stderr.on('data', (dado) => process.stderr.write(`[${nome}] ${dado}`));

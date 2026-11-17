@@ -10,6 +10,12 @@ const { hashSensivel, hashBusca } = require('./crypto');
 const DB_FILE = path.join(__dirname, '..', 'data', 'veterion.db');
 const SCHEMA_FILE = path.join(__dirname, '..', '..', 'db', 'schema.sql');
 
+// Em um clone novo do repositório, "backend/data" ainda não existe (pastas
+// vazias não são versionadas no Git) e o SQLite não cria diretórios
+// automaticamente ao abrir o arquivo - sem isso, o open falha com
+// SQLITE_CANTOPEN. Garantimos a pasta antes de abrir a conexão.
+fs.mkdirSync(path.dirname(DB_FILE), { recursive: true });
+
 const bancoNovo = !fs.existsSync(DB_FILE);
 const db = new sqlite3.Database(DB_FILE);
 db.run('PRAGMA foreign_keys = ON');

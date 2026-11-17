@@ -95,7 +95,7 @@ scripts/
   start-all.js             -> sobe backend + frontend juntos (usado pelo `npm start` da raiz)
   serve-frontend.js        -> servidor estático simples do frontend
 docs/
-  der.drawio / der.png / der.md     -> Diagrama de Entidade e Relacionamento (fonte draw.io)
+  der.drawio / der.png              -> Diagrama de Entidade e Relacionamento (fonte draw.io)
   requisitos-funcionais.pdf         -> Relatório de Requisitos Funcionais
   requisitos-nao-funcionais.pdf     -> Relatório de Requisitos Não Funcionais
 ```
