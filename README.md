@@ -15,9 +15,16 @@ agenda de atendimentos e um painel inicial com indicadores do dia a dia.
 ## Como rodar (sistema completo com um único comando)
 
 ```bash
+cp .env.example .env
 npm install
 npm start
 ```
+
+O `.env` guarda configurações e segredos locais (porta da API, porta do
+frontend e o "pepper" usado no hash de busca de CPF) e nunca é commitado —
+veja a seção "Variáveis de ambiente" abaixo. Se você pular o `cp` acima, o
+sistema ainda funciona com valores padrão, mas o ideal é sempre ter seu
+próprio `.env`.
 
 O `npm install` na raiz usa npm workspaces e já instala as dependências do
 backend. O `npm start` sobe os dois serviços juntos:
@@ -47,6 +54,29 @@ npm run start:frontend  # só o frontend estático, em :5500
 | camila   | vet123    | Veterinária  |
 | recepcao | 123456    | Recepção     |
 
+## Variáveis de ambiente
+
+As configurações sensíveis e específicas de ambiente ficam em um arquivo
+`.env` na raiz do projeto (carregado automaticamente pelo backend e pelo
+servidor do frontend via `dotenv`). Esse arquivo **nunca** é commitado — o
+`.gitignore` já o ignora. Use [`.env.example`](.env.example) como modelo:
+
+```bash
+cp .env.example .env
+```
+
+| Variável          | Para quê serve                                                        | Padrão se ausente |
+|-------------------|------------------------------------------------------------------------|--------------------|
+| `PORT`            | Porta em que a API escuta                                              | `3000`              |
+| `FRONTEND_PORT`   | Porta em que o frontend estático é servido                            | `5500`              |
+| `VETERION_PEPPER` | "Pepper" do HMAC usado só para detectar CPF duplicado (não é a chave que protege o CPF, que sempre usa scrypt + salt aleatório) | valor de desenvolvimento fixo no código — troque em produção |
+
+Gere um valor aleatório para `VETERION_PEPPER` em produção com:
+
+```bash
+node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+```
+
 ## Estrutura
 
 ```
@@ -65,7 +95,7 @@ scripts/
   start-all.js             -> sobe backend + frontend juntos (usado pelo `npm start` da raiz)
   serve-frontend.js        -> servidor estático simples do frontend
 docs/
-  der.png / der.dot / der.md        -> Diagrama de Entidade e Relacionamento
+  der.drawio / der.png / der.md     -> Diagrama de Entidade e Relacionamento (fonte draw.io)
   requisitos-funcionais.md          -> Relatório de Requisitos Funcionais
   requisitos-nao-funcionais.md      -> Relatório de Requisitos Não Funcionais
 ```

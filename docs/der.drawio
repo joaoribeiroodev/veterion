@@ -1,0 +1,122 @@
+<mxfile host="app.diagrams.net" agent="Veterion" version="24.0.0" type="device">
+  <diagram id="veterion-der" name="DER">
+<mxGraphModel dx="800" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="600" math="0" shadow="0" adaptiveColors="auto">
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+
+    <mxCell id="title" value="Veterion &#8212; Diagrama de Entidade e Relacionamento" style="text;html=1;align=left;verticalAlign=middle;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="40" y="20" width="700" height="30" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="tutores" value="TUTORES" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontalStack=0;resizeParent=1;resizeParentMax=0;horizontal=1;startSize=26;collapsible=0;html=1;fillColor=#5b3e9d;strokeColor=#3d2a69;fontColor=#FFFFFF;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="40" y="80" width="220" height="208" as="geometry"/>
+    </mxCell>
+    <mxCell id="t_id" value="PK  id : INTEGER" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=middle;spacingLeft=6;html=1;fontSize=12;fontColor=#241f33;" vertex="1" parent="tutores">
+      <mxGeometry y="26" width="220" height="26" as="geometry"/>
+    </mxCell>
+    <mxCell id="t_nome" value="nome : VARCHAR(100)" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=middle;spacingLeft=6;html=1;fontSize=12;fontColor=#241f33;" vertex="1" parent="tutores">
+      <mxGeometry y="52" width="220" height="26" as="geometry"/>
+    </mxCell>
+    <mxCell id="t_cpfhash" value="cpf_hash : VARCHAR(200)" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=middle;spacingLeft=6;html=1;fontSize=12;fontColor=#241f33;" vertex="1" parent="tutores">
+      <mxGeometry y="78" width="220" height="26" as="geometry"/>
+    </mxCell>
+    <mxCell id="t_cpfbusca" value="UK  cpf_busca : VARCHAR(64)" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=middle;spacingLeft=6;html=1;fontSize=12;fontColor=#241f33;" vertex="1" parent="tutores">
+      <mxGeometry y="104" width="220" height="26" as="geometry"/>
+    </mxCell>
+    <mxCell id="t_telefone" value="telefone : VARCHAR(20)" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=middle;spacingLeft=6;html=1;fontSize=12;fontColor=#241f33;" vertex="1" parent="tutores">
+      <mxGeometry y="130" width="220" height="26" as="geometry"/>
+    </mxCell>
+    <mxCell id="t_email" value="email : VARCHAR(100)" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=middle;spacingLeft=6;html=1;fontSize=12;fontColor=#241f33;" vertex="1" parent="tutores">
+      <mxGeometry y="156" width="220" height="26" as="geometry"/>
+    </mxCell>
+    <mxCell id="t_criado" value="criado_em : DATETIME" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=middle;spacingLeft=6;html=1;fontSize=12;fontColor=#241f33;" vertex="1" parent="tutores">
+      <mxGeometry y="182" width="220" height="26" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="pets" value="PETS" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontalStack=0;resizeParent=1;resizeParentMax=0;horizontal=1;startSize=26;collapsible=0;html=1;fillColor=#16a394;strokeColor=#0f7c70;fontColor=#FFFFFF;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="420" y="80" width="220" height="208" as="geometry"/>
+    </mxCell>
+    <mxCell id="p_id" value="PK  id : INTEGER" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=middle;spacingLeft=6;html=1;fontSize=12;fontColor=#241f33;" vertex="1" parent="pets">
+      <mxGeometry y="26" width="220" height="26" as="geometry"/>
+    </mxCell>
+    <mxCell id="p_nome" value="nome : VARCHAR(50)" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=middle;spacingLeft=6;html=1;fontSize=12;fontColor=#241f33;" vertex="1" parent="pets">
+      <mxGeometry y="52" width="220" height="26" as="geometry"/>
+    </mxCell>
+    <mxCell id="p_especie" value="especie : VARCHAR(30)" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=middle;spacingLeft=6;html=1;fontSize=12;fontColor=#241f33;" vertex="1" parent="pets">
+      <mxGeometry y="78" width="220" height="26" as="geometry"/>
+    </mxCell>
+    <mxCell id="p_raca" value="raca : VARCHAR(50)" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=middle;spacingLeft=6;html=1;fontSize=12;fontColor=#241f33;" vertex="1" parent="pets">
+      <mxGeometry y="104" width="220" height="26" as="geometry"/>
+    </mxCell>
+    <mxCell id="p_nascimento" value="data_nascimento : DATE" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=middle;spacingLeft=6;html=1;fontSize=12;fontColor=#241f33;" vertex="1" parent="pets">
+      <mxGeometry y="130" width="220" height="26" as="geometry"/>
+    </mxCell>
+    <mxCell id="p_tutorid" value="FK  tutor_id : INTEGER" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=middle;spacingLeft=6;html=1;fontSize=12;fontColor=#241f33;" vertex="1" parent="pets">
+      <mxGeometry y="156" width="220" height="26" as="geometry"/>
+    </mxCell>
+    <mxCell id="p_criado" value="criado_em : DATETIME" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=middle;spacingLeft=6;html=1;fontSize=12;fontColor=#241f33;" vertex="1" parent="pets">
+      <mxGeometry y="182" width="220" height="26" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="agendamentos" value="AGENDAMENTOS" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontalStack=0;resizeParent=1;resizeParentMax=0;horizontal=1;startSize=26;collapsible=0;html=1;fillColor=#42296f;strokeColor=#2c1a4c;fontColor=#FFFFFF;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="800" y="80" width="230" height="208" as="geometry"/>
+    </mxCell>
+    <mxCell id="a_id" value="PK  id : INTEGER" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=middle;spacingLeft=6;html=1;fontSize=12;fontColor=#241f33;" vertex="1" parent="agendamentos">
+      <mxGeometry y="26" width="230" height="26" as="geometry"/>
+    </mxCell>
+    <mxCell id="a_petid" value="FK  pet_id : INTEGER" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=middle;spacingLeft=6;html=1;fontSize=12;fontColor=#241f33;" vertex="1" parent="agendamentos">
+      <mxGeometry y="52" width="230" height="26" as="geometry"/>
+    </mxCell>
+    <mxCell id="a_data" value="data_agendamento : DATETIME" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=middle;spacingLeft=6;html=1;fontSize=12;fontColor=#241f33;" vertex="1" parent="agendamentos">
+      <mxGeometry y="78" width="230" height="26" as="geometry"/>
+    </mxCell>
+    <mxCell id="a_servico" value="servico : VARCHAR(100)" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=middle;spacingLeft=6;html=1;fontSize=12;fontColor=#241f33;" vertex="1" parent="agendamentos">
+      <mxGeometry y="104" width="230" height="26" as="geometry"/>
+    </mxCell>
+    <mxCell id="a_status" value="status : VARCHAR(20)" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=middle;spacingLeft=6;html=1;fontSize=12;fontColor=#241f33;" vertex="1" parent="agendamentos">
+      <mxGeometry y="130" width="230" height="26" as="geometry"/>
+    </mxCell>
+    <mxCell id="a_obs" value="observacoes : VARCHAR(255)" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=middle;spacingLeft=6;html=1;fontSize=12;fontColor=#241f33;" vertex="1" parent="agendamentos">
+      <mxGeometry y="156" width="230" height="26" as="geometry"/>
+    </mxCell>
+    <mxCell id="a_criado" value="criado_em : DATETIME" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=middle;spacingLeft=6;html=1;fontSize=12;fontColor=#241f33;" vertex="1" parent="agendamentos">
+      <mxGeometry y="182" width="230" height="26" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="usuarios" value="USUARIOS" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontalStack=0;resizeParent=1;resizeParentMax=0;horizontal=1;startSize=26;collapsible=0;html=1;fillColor=#847c99;strokeColor=#655d7a;fontColor=#FFFFFF;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="40" y="348" width="220" height="182" as="geometry"/>
+    </mxCell>
+    <mxCell id="u_id" value="PK  id : INTEGER" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=middle;spacingLeft=6;html=1;fontSize=12;fontColor=#241f33;" vertex="1" parent="usuarios">
+      <mxGeometry y="26" width="220" height="26" as="geometry"/>
+    </mxCell>
+    <mxCell id="u_nome" value="nome : VARCHAR(100)" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=middle;spacingLeft=6;html=1;fontSize=12;fontColor=#241f33;" vertex="1" parent="usuarios">
+      <mxGeometry y="52" width="220" height="26" as="geometry"/>
+    </mxCell>
+    <mxCell id="u_login" value="UK  login : VARCHAR(50)" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=middle;spacingLeft=6;html=1;fontSize=12;fontColor=#241f33;" vertex="1" parent="usuarios">
+      <mxGeometry y="78" width="220" height="26" as="geometry"/>
+    </mxCell>
+    <mxCell id="u_senhahash" value="senha_hash : VARCHAR(200)" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=middle;spacingLeft=6;html=1;fontSize=12;fontColor=#241f33;" vertex="1" parent="usuarios">
+      <mxGeometry y="104" width="220" height="26" as="geometry"/>
+    </mxCell>
+    <mxCell id="u_papel" value="papel : VARCHAR(20)" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=middle;spacingLeft=6;html=1;fontSize=12;fontColor=#241f33;" vertex="1" parent="usuarios">
+      <mxGeometry y="130" width="220" height="26" as="geometry"/>
+    </mxCell>
+    <mxCell id="u_criado" value="criado_em : DATETIME" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=middle;spacingLeft=6;html=1;fontSize=12;fontColor=#241f33;" vertex="1" parent="usuarios">
+      <mxGeometry y="156" width="220" height="26" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="nota_usuarios" value="Entidade de autentica&#231;&#227;o, sem relacionamento com as demais." style="text;html=1;align=left;verticalAlign=top;fontSize=11;fontColor=#6b6480;fontStyle=2;" vertex="1" parent="1">
+      <mxGeometry x="40" y="534" width="400" height="20" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="e1" value="" style="edgeStyle=entityRelationEdgeStyle;html=1;startArrow=ERmandOne;endArrow=ERzeroToMany;strokeColor=#5b3e9d;labelBackgroundColor=default;defaultLabelBackgroundColor=page;" edge="1" parent="1" source="t_id" target="p_tutorid">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e2" value="" style="edgeStyle=entityRelationEdgeStyle;html=1;startArrow=ERmandOne;endArrow=ERzeroToMany;strokeColor=#16a394;labelBackgroundColor=default;defaultLabelBackgroundColor=page;" edge="1" parent="1" source="p_id" target="a_petid">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+  </root>
+</mxGraphModel>
+  </diagram>
+</mxfile>

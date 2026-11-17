@@ -1,10 +1,12 @@
 // =====================================================
 // Veterion - servidor estático simples para o frontend
-// (sem dependências extras: usa só os módulos nativos do Node)
+// (usa apenas módulos nativos do Node, além do dotenv para ler o .env)
 // =====================================================
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+
+require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
 
 const PORT = process.env.FRONTEND_PORT || 5500;
 const RAIZ = path.join(__dirname, '..', 'frontend');

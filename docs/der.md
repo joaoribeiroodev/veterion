@@ -8,10 +8,11 @@ primeira execução.
 
 ![Diagrama de Entidade e Relacionamento do Veterion](der.png)
 
-O PNG acima foi gerado a partir do arquivo-fonte [`der.dot`](der.dot)
-(Graphviz: `dot -Tpng der.dot -o der.png`). Abaixo também há uma versão
-equivalente em Mermaid, útil para editar em ferramentas que renderizam esse
-formato (ex: GitHub, editores com plugin Mermaid).
+A fonte editável está em [`der.drawio`](der.drawio) — abra em
+[app.diagrams.net](https://app.diagrams.net) (ou no app desktop/plugin do
+draw.io) para editar. O PNG acima foi exportado a partir dela
+(`File > Export as > PNG`). Abaixo também há uma versão equivalente em
+Mermaid, útil para quem preferir editar como texto.
 
 ```mermaid
 erDiagram
@@ -68,39 +69,39 @@ erDiagram
 Quem acessa o sistema (login).
 
 | Atributo    | Tipo         | Restrições                                                        |
-|-------------|--------------|----------------------------------------------------------------------|
-| id          | INTEGER      | **PK**, autoincremento                                                 |
-| nome        | VARCHAR(100) | NOT NULL                                                                |
-| login       | VARCHAR(50)  | NOT NULL, **UNIQUE**                                                    |
-| senha_hash  | VARCHAR(200) | NOT NULL (hash com salt — scrypt; nunca texto puro)                    |
+|-------------|--------------|------------------------------------------------------------------|
+| id          | INTEGER      | **PK**, autoincremento                                            |
+| nome        | VARCHAR(100) | NOT NULL                                                          |
+| login       | VARCHAR(50)  | NOT NULL, **UNIQUE**                                              |
+| senha_hash  | VARCHAR(200) | NOT NULL (hash com salt — scrypt; nunca texto puro)               |
 | papel       | VARCHAR(20)  | NOT NULL, `DEFAULT 'recepcao'`, `CHECK IN ('admin','veterinario','recepcao')` |
-| criado_em   | DATETIME     | NOT NULL, `DEFAULT CURRENT_TIMESTAMP`                                   |
+| criado_em   | DATETIME     | NOT NULL, `DEFAULT CURRENT_TIMESTAMP`                             |
 
 ### TUTORES
 Responsáveis pelos pets.
 
 | Atributo   | Tipo         | Restrições                                                                 |
-|------------|--------------|---------------------------------------------------------------------------|
-| id         | INTEGER      | **PK**, autoincremento                                                     |
-| nome       | VARCHAR(100) | NOT NULL                                                                   |
-| cpf_hash   | VARCHAR(200) | NOT NULL (hash protegido com salt — scrypt; não reversível)                |
+|------------|--------------|-----------------------------------------------------------------------------|
+| id         | INTEGER      | **PK**, autoincremento                                                       |
+| nome       | VARCHAR(100) | NOT NULL                                                                     |
+| cpf_hash   | VARCHAR(200) | NOT NULL (hash protegido com salt — scrypt; não reversível)                  |
 | cpf_busca  | VARCHAR(64)  | NOT NULL, **UNIQUE** (HMAC determinístico, usado só para checar duplicidade de CPF) |
-| telefone   | VARCHAR(20)  | opcional                                                                   |
-| email      | VARCHAR(100) | opcional (formato validado na API)                                         |
-| criado_em  | DATETIME     | NOT NULL, `DEFAULT CURRENT_TIMESTAMP`                                      |
+| telefone   | VARCHAR(20)  | opcional                                                                     |
+| email      | VARCHAR(100) | opcional (formato validado na API)                                           |
+| criado_em  | DATETIME     | NOT NULL, `DEFAULT CURRENT_TIMESTAMP`                                        |
 
 ### PETS
 Animais atendidos pela clínica.
 
-| Atributo        | Tipo        | Restrições                                                      |
-|-----------------|-------------|-------------------------------------------------------------------|
-| id              | INTEGER     | **PK**, autoincremento                                             |
-| nome            | VARCHAR(50) | NOT NULL                                                           |
-| especie         | VARCHAR(30) | NOT NULL                                                           |
-| raca            | VARCHAR(50) | opcional                                                           |
-| data_nascimento | DATE        | opcional                                                           |
-| tutor_id        | INTEGER     | NOT NULL, **FK → TUTORES.id**, `ON DELETE CASCADE`                     |
-| criado_em       | DATETIME    | NOT NULL, `DEFAULT CURRENT_TIMESTAMP`                                  |
+| Atributo        | Tipo        | Restrições                                             |
+|-----------------|-------------|------------------------------------------------------------|
+| id              | INTEGER     | **PK**, autoincremento                                       |
+| nome            | VARCHAR(50) | NOT NULL                                                    |
+| especie         | VARCHAR(30) | NOT NULL                                                    |
+| raca            | VARCHAR(50) | opcional                                                    |
+| data_nascimento | DATE        | opcional                                                    |
+| tutor_id        | INTEGER     | NOT NULL, **FK → TUTORES.id**, `ON DELETE CASCADE`               |
+| criado_em       | DATETIME    | NOT NULL, `DEFAULT CURRENT_TIMESTAMP`                           |
 
 Índice: `idx_pets_tutor` em `tutor_id`.
 
@@ -108,14 +109,14 @@ Animais atendidos pela clínica.
 Atendimentos marcados para um pet.
 
 | Atributo         | Tipo         | Restrições                                                                 |
-|------------------|--------------|---------------------------------------------------------------------------|
-| id               | INTEGER      | **PK**, autoincremento                                                     |
-| pet_id           | INTEGER      | NOT NULL, **FK → PETS.id**, `ON DELETE CASCADE`                                |
-| data_agendamento | DATETIME     | NOT NULL                                                                   |
-| servico          | VARCHAR(100) | NOT NULL                                                                   |
-| status           | VARCHAR(20)  | NOT NULL, `DEFAULT 'Agendado'`, `CHECK IN ('Agendado','Concluído','Cancelado')` |
-| observacoes      | VARCHAR(255) | opcional                                                                   |
-| criado_em        | DATETIME     | NOT NULL, `DEFAULT CURRENT_TIMESTAMP`                                      |
+|------------------|--------------|-----------------------------------------------------------------------------|
+| id               | INTEGER      | **PK**, autoincremento                                                       |
+| pet_id           | INTEGER      | NOT NULL, **FK → PETS.id**, `ON DELETE CASCADE`                                  |
+| data_agendamento | DATETIME     | NOT NULL                                                                     |
+| servico          | VARCHAR(100) | NOT NULL                                                                     |
+| status           | VARCHAR(20)  | NOT NULL, `DEFAULT 'Agendado'`, `CHECK IN ('Agendado','Concluído','Cancelado')`  |
+| observacoes      | VARCHAR(255) | opcional                                                                     |
+| criado_em        | DATETIME     | NOT NULL, `DEFAULT CURRENT_TIMESTAMP`                                        |
 
 Índices: `idx_agendamentos_pet` em `pet_id`; `idx_agendamentos_data` em `data_agendamento`.
 
