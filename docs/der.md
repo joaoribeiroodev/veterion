@@ -2,6 +2,10 @@
 
 ## Diagrama
 
+![Diagrama de Entidade e Relacionamento do Veterion](der.png)
+
+O PNG acima foi gerado a partir do arquivo-fonte `docs/der.dot` (Graphviz). Abaixo também está uma versão equivalente em Mermaid, útil para editar em ferramentas que renderizam esse formato (ex: GitHub, editores com plugin Mermaid).
+
 ```mermaid
 erDiagram
     USUARIOS {

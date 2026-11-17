@@ -1,0 +1,61 @@
+digraph DER {
+  graph [rankdir=LR, splines=ortho, bgcolor="white", fontname="Segoe UI", nodesep=0.9, ranksep=1.2];
+  node [shape=plain, fontname="Segoe UI"];
+  edge [fontname="Segoe UI", fontsize=11, color="#5b3e9d", penwidth=1.4];
+
+  USUARIOS [label=<
+    <table border="1" cellborder="0" cellspacing="0" cellpadding="6" bgcolor="white" color="#5b3e9d">
+      <tr><td bgcolor="#5b3e9d" align="center"><font color="white"><b>USUARIOS</b></font></td></tr>
+      <tr><td align="left"><font point-size="11">PK  id : INTEGER</font></td></tr>
+      <tr><td align="left"><font point-size="11">    nome : VARCHAR(100)</font></td></tr>
+      <tr><td align="left"><font point-size="11">UK  login : VARCHAR(50)</font></td></tr>
+      <tr><td align="left"><font point-size="11">    senha_hash : VARCHAR(200)</font></td></tr>
+      <tr><td align="left"><font point-size="11">    papel : VARCHAR(20)</font></td></tr>
+      <tr><td align="left"><font point-size="11">    criado_em : DATETIME</font></td></tr>
+    </table>
+  >];
+
+  TUTORES [label=<
+    <table border="1" cellborder="0" cellspacing="0" cellpadding="6" bgcolor="white" color="#5b3e9d">
+      <tr><td bgcolor="#5b3e9d" align="center"><font color="white"><b>TUTORES</b></font></td></tr>
+      <tr><td align="left"><font point-size="11">PK  id : INTEGER</font></td></tr>
+      <tr><td align="left"><font point-size="11">    nome : VARCHAR(100)</font></td></tr>
+      <tr><td align="left"><font point-size="11">    cpf_hash : VARCHAR(200)</font></td></tr>
+      <tr><td align="left"><font point-size="11">UK  cpf_busca : VARCHAR(64)</font></td></tr>
+      <tr><td align="left"><font point-size="11">    telefone : VARCHAR(20)</font></td></tr>
+      <tr><td align="left"><font point-size="11">    email : VARCHAR(100)</font></td></tr>
+      <tr><td align="left"><font point-size="11">    criado_em : DATETIME</font></td></tr>
+    </table>
+  >];
+
+  PETS [label=<
+    <table border="1" cellborder="0" cellspacing="0" cellpadding="6" bgcolor="white" color="#16a394">
+      <tr><td bgcolor="#16a394" align="center"><font color="white"><b>PETS</b></font></td></tr>
+      <tr><td align="left"><font point-size="11">PK  id : INTEGER</font></td></tr>
+      <tr><td align="left"><font point-size="11">    nome : VARCHAR(50)</font></td></tr>
+      <tr><td align="left"><font point-size="11">    especie : VARCHAR(30)</font></td></tr>
+      <tr><td align="left"><font point-size="11">    raca : VARCHAR(50)</font></td></tr>
+      <tr><td align="left"><font point-size="11">    data_nascimento : DATE</font></td></tr>
+      <tr><td align="left"><font point-size="11">FK  tutor_id : INTEGER</font></td></tr>
+      <tr><td align="left"><font point-size="11">    criado_em : DATETIME</font></td></tr>
+    </table>
+  >];
+
+  AGENDAMENTOS [label=<
+    <table border="1" cellborder="0" cellspacing="0" cellpadding="6" bgcolor="white" color="#42296f">
+      <tr><td bgcolor="#42296f" align="center"><font color="white"><b>AGENDAMENTOS</b></font></td></tr>
+      <tr><td align="left"><font point-size="11">PK  id : INTEGER</font></td></tr>
+      <tr><td align="left"><font point-size="11">FK  pet_id : INTEGER</font></td></tr>
+      <tr><td align="left"><font point-size="11">    data_agendamento : DATETIME</font></td></tr>
+      <tr><td align="left"><font point-size="11">    servico : VARCHAR(100)</font></td></tr>
+      <tr><td align="left"><font point-size="11">    status : VARCHAR(20)</font></td></tr>
+      <tr><td align="left"><font point-size="11">    observacoes : VARCHAR(255)</font></td></tr>
+      <tr><td align="left"><font point-size="11">    criado_em : DATETIME</font></td></tr>
+    </table>
+  >];
+
+  TUTORES -> PETS [label="  1       N  ", arrowhead=crow, arrowtail=tee, dir=both];
+  PETS -> AGENDAMENTOS [label="  1       N  ", arrowhead=crow, arrowtail=tee, dir=both];
+
+  { rank=same; USUARIOS }
+}
