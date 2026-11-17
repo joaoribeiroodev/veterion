@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tutores - Veterion</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-pagina="tutores">
+  <header>
+    <h1>🐾 Veterion</h1>
+    <nav>
+      <a href="dashboard.html">Início</a>
+      <a href="tutores.html" class="ativo">Tutores</a>
+      <a href="pets.html">Pets</a>
+      <a href="agendamentos.html">Agendamentos</a>
+    </nav>
+    <div class="usuario">
+      <span id="nomeUsuario"></span>
+      <button id="btnSair" class="btn-sair">Sair</button>
+    </div>
+  </header>
+  <main>
+    <h2>Tutores</h2>
+
+    <form id="formBusca" class="linha">
+      <input type="text" id="busca" placeholder="Buscar por nome, e-mail ou telefone...">
+      <button type="submit">Buscar</button>
+      <button type="button" id="btnLimparBusca" class="secundario">Limpar</button>
+    </form>
+
+    <table>
+      <thead>
+        <tr><th>Nome</th><th>CPF</th><th>Telefone</th><th>E-mail</th><th>Ações</th></tr>
+      </thead>
+      <tbody id="tabelaTutores"></tbody>
+    </table>
+
+    <section class="formulario">
+      <h3 id="tituloFormTutor">Novo tutor</h3>
+      <form id="formTutor">
+        <input type="hidden" id="tutorId">
+        <label for="tutorNome">Nome</label>
+        <input type="text" id="tutorNome" required>
+
+        <label for="tutorCpf">CPF</label>
+        <input type="text" id="tutorCpf" maxlength="14" placeholder="000.000.000-00">
+
+        <label for="tutorTelefone">Telefone</label>
+        <input type="text" id="tutorTelefone">
+
+        <label for="tutorEmail">E-mail</label>
+        <input type="email" id="tutorEmail">
+
+        <p id="msgTutor" class="erro" hidden></p>
+        <div class="linha">
+          <button type="submit">Salvar</button>
+          <button type="button" id="btnCancelarTutor" class="secundario">Cancelar</button>
+        </div>
+      </form>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

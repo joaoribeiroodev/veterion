@@ -1,0 +1,16 @@
+{
+  "name": "veterion-api",
+  "version": "1.0.0",
+  "description": "API REST do Veterion - sistema de gestao para clinicas veterinarias (Express + SQLite)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["veterion", "clinica", "veterinaria", "pets", "api"],
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "sqlite3": "^5.1.7"
+  }
+}

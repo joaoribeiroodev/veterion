@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Início - Veterion</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-pagina="dashboard">
+  <header>
+    <h1>🐾 Veterion</h1>
+    <nav>
+      <a href="dashboard.html" class="ativo">Início</a>
+      <a href="tutores.html">Tutores</a>
+      <a href="pets.html">Pets</a>
+      <a href="agendamentos.html">Agendamentos</a>
+    </nav>
+    <div class="usuario">
+      <span id="nomeUsuario"></span>
+      <button id="btnSair" class="btn-sair">Sair</button>
+    </div>
+  </header>
+  <main>
+    <h2>Bem-vindo(a), <span id="boasVindas"></span>!</h2>
+
+    <div class="resumo" id="resumo">
+      <div class="caixa"><strong id="resumoTutores">-</strong><span>Tutores cadastrados</span></div>
+      <div class="caixa"><strong id="resumoPets">-</strong><span>Pets cadastrados</span></div>
+      <div class="caixa"><strong id="resumoHoje">-</strong><span>Agendamentos hoje</span></div>
+      <div class="caixa"><strong id="resumoAbertos">-</strong><span>Agendamentos em aberto</span></div>
+    </div>
+
+    <p>Escolha uma opção:</p>
+    <div class="cards">
+      <a class="card" href="tutores.html">👤<strong>Tutores</strong><span>Cadastrar, buscar, editar e excluir</span></a>
+      <a class="card" href="pets.html">🐶<strong>Pets</strong><span>Cadastrar, editar e excluir</span></a>
+      <a class="card" href="agendamentos.html">📅<strong>Agendamentos</strong><span>Consultar, remarcar e concluir</span></a>
+    </div>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

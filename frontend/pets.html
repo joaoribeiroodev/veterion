@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pets - Veterion</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-pagina="pets">
+  <header>
+    <h1>🐾 Veterion</h1>
+    <nav>
+      <a href="dashboard.html">Início</a>
+      <a href="tutores.html">Tutores</a>
+      <a href="pets.html" class="ativo">Pets</a>
+      <a href="agendamentos.html">Agendamentos</a>
+    </nav>
+    <div class="usuario">
+      <span id="nomeUsuario"></span>
+      <button id="btnSair" class="btn-sair">Sair</button>
+    </div>
+  </header>
+  <main>
+    <h2>Pets</h2>
+
+    <form id="formFiltro" class="linha">
+      <select id="filtroEspecie">
+        <option value="">Todas as espécies</option>
+      </select>
+      <button type="button" id="btnLimparFiltro" class="secundario">Limpar filtro</button>
+    </form>
+
+    <table>
+      <thead>
+        <tr><th>Nome</th><th>Espécie</th><th>Raça</th><th>Nascimento</th><th>Tutor</th><th>Ações</th></tr>
+      </thead>
+      <tbody id="tabelaPets"></tbody>
+    </table>
+
+    <section class="formulario">
+      <h3 id="tituloFormPet">Novo pet</h3>
+      <form id="formPet">
+        <input type="hidden" id="petId">
+        <label for="petNome">Nome</label>
+        <input type="text" id="petNome" required>
+
+        <label for="petEspecie">Espécie</label>
+        <input type="text" id="petEspecie" placeholder="Cachorro, Gato..." required>
+
+        <label for="petRaca">Raça</label>
+        <input type="text" id="petRaca">
+
+        <label for="petNascimento">Data de nascimento</label>
+        <input type="date" id="petNascimento">
+
+        <label for="petTutor">Tutor</label>
+        <select id="petTutor" required>
+          <option value="">Selecione o tutor...</option>
+        </select>
+
+        <p id="msgPet" class="erro" hidden></p>
+        <div class="linha">
+          <button type="submit">Salvar</button>
+          <button type="button" id="btnCancelarPet" class="secundario">Cancelar</button>
+        </div>
+      </form>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

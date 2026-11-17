@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendamentos - Veterion</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-pagina="agendamentos">
+  <header>
+    <h1>🐾 Veterion</h1>
+    <nav>
+      <a href="dashboard.html">Início</a>
+      <a href="tutores.html">Tutores</a>
+      <a href="pets.html">Pets</a>
+      <a href="agendamentos.html" class="ativo">Agendamentos</a>
+    </nav>
+    <div class="usuario">
+      <span id="nomeUsuario"></span>
+      <button id="btnSair" class="btn-sair">Sair</button>
+    </div>
+  </header>
+  <main>
+    <h2>Agendamentos</h2>
+
+    <form id="formFiltroStatus" class="linha">
+      <select id="filtroStatus">
+        <option value="">Todos os status</option>
+        <option value="Agendado">Agendado</option>
+        <option value="Concluído">Concluído</option>
+        <option value="Cancelado">Cancelado</option>
+      </select>
+      <button type="button" id="btnLimparFiltroStatus" class="secundario">Limpar filtro</button>
+    </form>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Data/Hora</th><th>Serviço</th><th>Status</th>
+          <th>Pet</th><th>Espécie</th><th>Tutor</th><th>Telefone</th><th>Ações</th>
+        </tr>
+      </thead>
+      <tbody id="tabelaAgendamentos"></tbody>
+    </table>
+
+    <section class="formulario" id="secaoEditar" hidden>
+      <h3>Remarcar agendamento</h3>
+      <p id="infoEditar"></p>
+      <form id="formEditarData">
+        <input type="hidden" id="agendamentoId">
+        <label for="novaData">Nova data e hora</label>
+        <input type="datetime-local" id="novaData" required>
+        <p id="msgEditar" class="erro" hidden></p>
+        <div class="linha">
+          <button type="submit">Salvar data</button>
+          <button type="button" id="btnCancelarEditar" class="secundario">Cancelar</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="formulario">
+      <h3>Novo agendamento</h3>
+      <form id="formAgendamento">
+        <label for="agPet">Pet</label>
+        <select id="agPet" required><option value="">Selecione o pet...</option></select>
+
+        <label for="agData">Data e hora</label>
+        <input type="datetime-local" id="agData" required>
+
+        <label for="agServico">Serviço</label>
+        <input type="text" id="agServico" placeholder="Consulta, vacina, banho..." required>
+
+        <p id="msgAgendamento" class="erro" hidden></p>
+        <button type="submit">Agendar</button>
+      </form>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

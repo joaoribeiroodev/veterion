@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrar - Veterion</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-pagina="login" class="pagina-login">
+  <main class="caixa-login">
+    <h1>🐾 Veterion</h1>
+    <p>Entre para acessar o sistema</p>
+
+    <form id="formLogin">
+      <label for="login">Usuário</label>
+      <input type="text" id="login" required autofocus>
+
+      <label for="senha">Senha</label>
+      <input type="password" id="senha" required>
+
+      <p id="msgErro" class="erro" hidden></p>
+
+      <button type="submit">Entrar</button>
+    </form>
+    <small>Teste: admin / admin123</small>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+# Dependências
+node_modules/
+
+# Banco de dados local (gerado automaticamente na primeira execução)
+backend/data/*.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Ambiente
+.env
+
+# Sistema operacional / editores
+.DS_Store
+Thumbs.db
+.vscode/

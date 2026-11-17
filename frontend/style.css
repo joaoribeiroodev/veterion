@@ -1,0 +1,74 @@
+/* =====================================================
+   Veterion - estilos
+   Paleta própria (violeta/verde-água) para diferenciar
+   visualmente do sistema original.
+   ===================================================== */
+* { box-sizing: border-box; }
+body { margin: 0; font-family: 'Segoe UI', Arial, Helvetica, sans-serif; background: #f4f3fb; color: #241f33; }
+
+:root {
+  --cor-primaria: #5b3e9d;
+  --cor-primaria-escura: #42296f;
+  --cor-destaque: #16a394;
+  --cor-perigo: #c0392b;
+  --cor-texto-suave: #6b6480;
+}
+
+/* Cabeçalho / navegação */
+header { display: flex; align-items: center; gap: 24px; padding: 12px 24px; background: var(--cor-primaria-escura); color: #fff; flex-wrap: wrap; }
+header h1 { font-size: 20px; margin: 0; }
+nav { display: flex; gap: 16px; flex: 1; }
+nav a { color: #fff; text-decoration: none; padding: 6px 10px; border-radius: 6px; }
+nav a:hover, nav a.ativo { background: rgba(255,255,255,.2); }
+.usuario { display: flex; align-items: center; gap: 12px; }
+.btn-sair { background: var(--cor-perigo); }
+
+main { max-width: 1000px; margin: 24px auto; padding: 0 16px; }
+h2 { margin-top: 0; }
+
+/* Botões e campos */
+button { background: var(--cor-primaria); color: #fff; border: 0; padding: 9px 16px; border-radius: 6px; cursor: pointer; font-size: 14px; }
+button:hover { opacity: .9; }
+button.secundario { background: #847c99; }
+button.perigo { background: var(--cor-perigo); }
+button.sucesso { background: var(--cor-destaque); }
+input, select { width: 100%; padding: 9px; margin: 4px 0 12px; border: 1px solid #cac3dd; border-radius: 6px; font-size: 14px; }
+label { font-weight: bold; font-size: 14px; }
+.linha { display: flex; gap: 8px; align-items: center; margin-bottom: 16px; flex-wrap: wrap; }
+.linha input, .linha select { margin: 0; flex: 1; min-width: 160px; }
+.erro { color: var(--cor-perigo); font-weight: bold; margin: 0 0 12px; }
+
+/* Tabelas */
+table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.1); }
+th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #ece9f5; font-size: 14px; }
+th { background: #ebe6f7; }
+td .acoes { display: flex; gap: 6px; flex-wrap: wrap; }
+td button { padding: 5px 10px; font-size: 13px; }
+.status-pill { padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: bold; color: #fff; display: inline-block; }
+.status-agendado { background: #2d7dd2; }
+.status-concluido { background: var(--cor-destaque); }
+.status-cancelado { background: var(--cor-perigo); }
+
+/* Formulários em caixa */
+.formulario { background: #fff; padding: 20px; margin-top: 24px; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,.1); max-width: 520px; }
+.formulario h3 { margin-top: 0; }
+
+/* Cards do dashboard */
+.resumo { display: flex; gap: 16px; flex-wrap: wrap; margin: 16px 0 24px; }
+.resumo .caixa { flex: 1; min-width: 160px; background: #fff; padding: 18px; border-radius: 10px; box-shadow: 0 1px 4px rgba(0,0,0,.1); text-align: center; }
+.resumo .caixa strong { display: block; font-size: 28px; color: var(--cor-primaria); }
+.resumo .caixa span { font-size: 13px; color: var(--cor-texto-suave); }
+
+.cards { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 16px; }
+.card { flex: 1; min-width: 200px; background: #fff; padding: 24px; border-radius: 10px; text-align: center; text-decoration: none; color: inherit;
+        display: flex; flex-direction: column; gap: 6px; font-size: 32px; box-shadow: 0 1px 4px rgba(0,0,0,.1); transition: transform .15s; }
+.card strong { font-size: 18px; color: #241f33; }
+.card span { font-size: 13px; color: var(--cor-texto-suave); }
+.card:hover { transform: translateY(-3px); }
+
+/* Tela de login */
+.pagina-login { display: flex; align-items: center; justify-content: center; min-height: 100vh; background: linear-gradient(135deg, var(--cor-primaria), var(--cor-primaria-escura)); }
+.caixa-login { background: #fff; padding: 32px; border-radius: 12px; width: 340px; text-align: center; }
+.caixa-login form { text-align: left; }
+.caixa-login button { width: 100%; }
+.caixa-login small { display: block; margin-top: 14px; color: var(--cor-texto-suave); }
