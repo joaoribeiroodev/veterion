@@ -12,26 +12,32 @@ agenda de atendimentos e um painel inicial com indicadores do dia a dia.
 - **Backend:** Node.js, Express, SQLite3
 - **Frontend:** HTML, CSS e JavaScript puro (sem framework)
 
-## Como rodar
-
-### 1) Backend (API)
+## Como rodar (sistema completo com um único comando)
 
 ```bash
-cd backend
 npm install
 npm start
 ```
 
-A API sobe em `http://localhost:3000`. No primeiro start, o banco
-`backend/data/veterion.db` é criado automaticamente a partir do schema em
-`backend/db/schema.sql`, já populado com dados de exemplo. Para recomeçar do
-zero, apague esse arquivo `.db` e rode `npm start` novamente.
+O `npm install` na raiz usa npm workspaces e já instala as dependências do
+backend. O `npm start` sobe os dois serviços juntos:
 
-### 2) Frontend
+- **API** em `http://localhost:3000` (rotas em `/api/*`)
+- **Frontend** em `http://localhost:5500`
 
-Abra a pasta `frontend` no VS Code e use a extensão **Live Server** em
-`index.html` (ou sirva a pasta com qualquer servidor estático). O frontend
-consome a API em `http://localhost:3000/api`.
+No primeiro start, o banco `backend/data/veterion.db` é criado
+automaticamente a partir do schema em `db/schema.sql`, já populado com dados
+de exemplo. Para recomeçar do zero, apague esse arquivo `.db` e rode
+`npm start` novamente. `Ctrl+C` encerra os dois serviços de uma vez.
+
+Abra `http://localhost:5500` no navegador para usar o sistema.
+
+### Rodando cada parte separadamente (opcional)
+
+```bash
+npm run start:backend   # só a API, em :3000
+npm run start:frontend  # só o frontend estático, em :5500
+```
 
 ### Login de teste
 
@@ -44,20 +50,24 @@ consome a API em `http://localhost:3000/api`.
 ## Estrutura
 
 ```
+db/
+  schema.sql              -> definição das tabelas (usada pelo backend na primeira execução)
 backend/
-  db/schema.sql        -> definição das tabelas
-  src/crypto.js         -> hashing de senha/CPF e hash de busca
-  src/validadores.js     -> validação de CPF e e-mail
-  src/db.js              -> inicialização + seed do banco
-  src/routes/            -> rotas da API (auth, tutores, pets, agendamentos, dashboard)
-  server.js              -> ponto de entrada da API
+  src/crypto.js           -> hashing de senha/CPF e hash de busca
+  src/validadores.js      -> validação de CPF e e-mail
+  src/db.js               -> inicialização + seed do banco (lê db/schema.sql)
+  src/routes/             -> rotas da API (auth, tutores, pets, agendamentos, dashboard)
+  server.js               -> ponto de entrada da API
 frontend/
   index.html, dashboard.html, tutores.html, pets.html, agendamentos.html
   app.js, style.css
+scripts/
+  start-all.js             -> sobe backend + frontend juntos (usado pelo `npm start` da raiz)
+  serve-frontend.js        -> servidor estático simples do frontend
 docs/
-  der.md                           -> Diagrama de Entidade e Relacionamento
-  requisitos-funcionais.md         -> Relatório de Requisitos Funcionais
-  requisitos-nao-funcionais.md     -> Relatório de Requisitos Não Funcionais
+  der.png / der.dot / der.md        -> Diagrama de Entidade e Relacionamento
+  requisitos-funcionais.md          -> Relatório de Requisitos Funcionais
+  requisitos-nao-funcionais.md      -> Relatório de Requisitos Não Funcionais
 ```
 
 ## O que mudou em relação ao protótipo original
@@ -67,6 +77,9 @@ docs/
 - **API reorganizada:** rotas movidas para `/api/*`, separadas em módulos por
   domínio (`auth`, `tutores`, `pets`, `agendamentos`, `dashboard`) em vez de um
   único arquivo `server.js` monolítico.
+- **Sobe tudo com um único `npm start`:** antes era preciso rodar a API
+  manualmente e abrir o frontend à parte via Live Server; agora um script na
+  raiz orquestra os dois processos (API + servidor estático do frontend).
 - **Correções de bugs / falhas de validação:**
   - CPF agora é validado pelo algoritmo oficial dos dígitos verificadores
     (antes, qualquer sequência de 11 dígitos era aceita).

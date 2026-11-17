@@ -1,0 +1,15 @@
+{
+  "name": "veterion",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Veterion - sistema de gestão para clínicas veterinárias (backend + frontend)",
+  "workspaces": [
+    "backend"
+  ],
+  "scripts": {
+    "start": "node scripts/start-all.js",
+    "start:backend": "npm start --workspace backend",
+    "start:frontend": "node scripts/serve-frontend.js"
+  },
+  "license": "MIT"
+}

@@ -8,7 +8,7 @@ const path = require('path');
 const { hashSensivel, hashBusca } = require('./crypto');
 
 const DB_FILE = path.join(__dirname, '..', 'data', 'veterion.db');
-const SCHEMA_FILE = path.join(__dirname, '..', 'db', 'schema.sql');
+const SCHEMA_FILE = path.join(__dirname, '..', '..', 'db', 'schema.sql');
 
 const bancoNovo = !fs.existsSync(DB_FILE);
 const db = new sqlite3.Database(DB_FILE);
